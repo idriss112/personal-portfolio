@@ -1,11 +1,8 @@
 "use client";
-import { personalData } from "@/../utils/Data/PersonalData";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { SplitText } from "gsap/dist/SplitText";
-import Image from "next/image";
-import Tilt from "react-parallax-tilt";
 import { User, Sparkles } from "lucide-react";
 
 function About() {
@@ -31,21 +28,6 @@ function About() {
       },
     });
 
-    gsap.fromTo(
-      ".about-image-card",
-      { opacity: 0, scale: 0.9, x: 50 },
-      {
-        opacity: 1,
-        scale: 1,
-        x: 0,
-        duration: 1.2,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: ".about-image-card",
-          start: "top 80%",
-        },
-      },
-    );
   }, []);
 
   return (
@@ -55,99 +37,65 @@ function About() {
       <div className="absolute bottom-1/4 -right-20 w-[400px] h-[400px] bg-[#20232A]/10 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
-          {/* Left Side: Content */}
-          <div className="lg:col-span-7 flex flex-col gap-8 order-2 lg:order-1">
-            <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-3 text-[#61DAFB] mb-2">
-                <div className="w-10 h-10 rounded-xl bg-[#61DAFB]/10 flex items-center justify-center">
-                  <User className="w-5 h-5 shadow-[0_0_15px_rgba(97, 218, 251, 0.3)]" />
-                </div>
-                <span className="text-sm font-bold uppercase tracking-[0.3em]">
-                  Discovery
-                </span>
+        <div className="w-full flex flex-col gap-8">
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-3 text-[#61DAFB] mb-2">
+              <div className="w-10 h-10 rounded-xl bg-[#61DAFB]/10 flex items-center justify-center">
+                <User className="w-5 h-5 shadow-[0_0_15px_rgba(97, 218, 251, 0.3)]" />
               </div>
-              <h2 className="text-4xl md:text-5xl font-black text-white leading-tight">
-                About{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#61DAFB] to-[#282C34]">
-                  The Architect
-                </span>
-              </h2>
+              <span className="text-sm font-bold uppercase tracking-[0.3em]">
+                Discovery
+              </span>
             </div>
-
-            <div className="relative group p-8 lg:p-10 rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-3xl overflow-hidden shadow-2xl">
-              <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:rotate-12 transition-transform duration-700">
-                <Sparkles className="w-24 h-24 text-[#61DAFB]" />
-              </div>
-
-              <div className="about-description text-slate-300 text-lg lg:text-xl leading-relaxed text-justify space-y-4 font-medium italic">
-                {personalData.description}
-              </div>
-
-              {/* Decorative Accent */}
-              <div className="absolute  w-1 h-20 bg-gradient-to-b from-[#61DAFB] to-transparent left-0 top-10 rounded-full" />
-            </div>
-
-            <div className="flex flex-wrap gap-8 items-center mt-4">
-              <div className="flex flex-col">
-                <span className="text-3xl font-black text-white">2+</span>
-                <span className="text-xs text-slate-500 uppercase tracking-widest font-bold">
-                  Years Experience
-                </span>
-              </div>
-              <div className="w-[1px] h-10 bg-white/10" />
-              <div className="flex flex-col">
-                <span className="text-3xl font-black text-white">20+</span>
-                <span className="text-xs text-slate-500 uppercase tracking-widest font-bold">
-                  Global Projects
-                </span>
-              </div>
-              <div className="w-[1px] h-10 bg-white/10" />
-              <div className="flex flex-col">
-                <span className="text-3xl font-black text-white">10+</span>
-                <span className="text-xs text-slate-500 uppercase tracking-widest font-bold">
-                  Tech Mastered
-                </span>
-              </div>
-            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-white leading-tight">
+              About{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#61DAFB] to-[#282C34]">
+                The Architect
+              </span>
+            </h2>
           </div>
 
-          {/* Right Side: Profile Image with High-End Frame */}
-          <div className="lg:col-span-5 order-1 lg:order-2">
-            <Tilt
-              perspective={1500}
-              glareEnable={true}
-              glareMaxOpacity={0.2}
-              glareColor="#61DAFB"
-              scale={1.05}
-              className="about-image-card"
-            >
-              <div className="relative group">
-                {/* Decorative Frames */}
-                <div className="absolute -inset-4 border border-[#61DAFB]/20 rounded-3xl group-hover:-inset-6 transition-all duration-500 opacity-50" />
-                <div className="absolute -inset-8 border border-[#21232A]/10 rounded-[40px] group-hover:-inset-12 transition-all duration-700 delay-75 opacity-30" />
+          <div className="relative group p-8 lg:p-10 rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-3xl overflow-hidden shadow-2xl">
+            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:rotate-12 transition-transform duration-700">
+              <Sparkles className="w-24 h-24 text-[#61DAFB]" />
+            </div>
 
-                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border-2 border-white/10 shadow-[0_0_50px_rgba(97,218,251,0.3)] bg-[#050505]">
-                  <Image
-                    src={personalData.profile}
-                    fill
-                    alt={personalData.name}
-                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    priority
-                  />
+            <div className="about-description text-slate-300 text-lg lg:text-xl leading-relaxed text-justify space-y-4 font-medium italic">
+              I&apos;m Driss Laaziri, a Full-Stack Developer based in Montreal
+              specializing in React, Next.js, TypeScript, C#, and .NET. I
+              build responsive, scalable web and mobile applications from
+              concept to deployment. With hands-on experience across frontend,
+              backend, and database layers, I focus on writing clean code that
+              solves real problems. I&apos;m currently a Computer Science
+              student at LaSalle College, actively seeking software development
+              internships to grow and contribute to real-world projects.
+            </div>
 
-                  {/* Overlay Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60" />
+            {/* Decorative Accent */}
+            <div className="absolute w-1 h-20 bg-gradient-to-b from-[#61DAFB] to-transparent left-0 top-10 rounded-full" />
+          </div>
 
-                  <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/5 backdrop-blur-xl border border-white/10 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                    <p className="text-white font-bold text-center tracking-widest uppercase text-xs">
-                      Built with Passion
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Tilt>
+          <div className="flex flex-wrap justify-center items-center gap-8 mt-4 w-full text-center">
+            <div className="flex flex-col items-center">
+              <span className="text-3xl font-black text-white">2+</span>
+              <span className="text-xs text-slate-500 uppercase tracking-widest font-bold">
+                Years Experience
+              </span>
+            </div>
+            <div className="hidden sm:block w-[1px] h-10 bg-white/10" />
+            <div className="flex flex-col items-center">
+              <span className="text-3xl font-black text-white">20+</span>
+              <span className="text-xs text-slate-500 uppercase tracking-widest font-bold">
+                Global Projects
+              </span>
+            </div>
+            <div className="hidden sm:block w-[1px] h-10 bg-white/10" />
+            <div className="flex flex-col items-center">
+              <span className="text-3xl font-black text-white">10+</span>
+              <span className="text-xs text-slate-500 uppercase tracking-widest font-bold">
+                Tech Mastered
+              </span>
+            </div>
           </div>
         </div>
       </div>
