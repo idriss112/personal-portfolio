@@ -16,7 +16,7 @@ export const personalData = {
   address: "Islamabad",
   github: "https://github.com/idriss112",
   facebook: "https://www.facebook.com/profile.php?id=100092595303195",
-  Instagram: "https://www.instagram.com/captain_ghost005",
+  Instagram: "https://www.instagram.com/idrisslzr/",
   linkedIn: "https://www.linkedin.com/in/idrisslzr/",
   twitter: "https://x.com/LaaziriIdriss",
   stackOverflow: "https://stackoverflow.com/users/15349472/captain-ghost",
