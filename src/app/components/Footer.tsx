@@ -14,7 +14,7 @@ const Footer = () => (
           <Link href="/" className="w-fit">
             <Image
               src="/logo.png"
-              alt="Abdul Basit Logo"
+              alt="Driss Laaziri Logo"
               width={100}
               height={100}
               className="brightness-125"
@@ -111,7 +111,7 @@ const Footer = () => (
       {/* Divider & Copyright */}
       <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
         <p>
-          &copy; {new Date().getFullYear()} Abdul Basit. All rights reserved.
+          &copy; {new Date().getFullYear()} Driss Laaziri. All rights reserved.
         </p>
         <p className="flex items-center gap-2">
           Made with{" "}

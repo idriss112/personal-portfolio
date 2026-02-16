@@ -114,16 +114,16 @@ const HeroSection = () => {
         <div className="order-2 lg:order-1 flex flex-col items-start gap-8">
           <div className="flex flex-col gap-4">
             <span className="hero-tag px-4 py-1.5 rounded-full bg-[#61DAFB]/10 border border-[#61DAFB]/20 text-[#61DAFB] text-xs font-bold tracking-[0.3em] w-fit">
-              WELCOME TO MY UNIVERSE
+              WELCOME TO MY PORTFOLIO
             </span>
             <h1 className="hero-heading text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1]">
-              Crafting{" "}
+              Build.{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#61DAFB] to-[#282C34]">
-                Digital
+                Solve.{" "}
               </span>
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#282C34] to-[#21232A]">
-                Masterpieces
+                Deliver.
               </span>
             </h1>
             <p className="hero-heading text-lg md:text-xl text-slate-400 max-w-xl leading-relaxed font-medium">
@@ -236,7 +236,7 @@ const HeroSection = () => {
                     <span className="text-slate-600 italic">02</span>
                     <p className="ml-4">
                       <span className="text-slate-200">name:</span>{" "}
-                      <span className="text-[#88E5FF]">'Abdul Basit'</span>,
+                      <span className="text-[#88E5FF]">'Driss Laaziri'</span>,
                     </p>
                   </div>
                   <div className="flex gap-4">
@@ -244,7 +244,7 @@ const HeroSection = () => {
                     <p className="ml-4">
                       <span className="text-slate-200">focus:</span>{" "}
                       <span className="text-[#88E5FF]">
-                        'Fullstack Mastery'
+                        'Scalable Web Applications'
                       </span>
                       ,
                     </p>
@@ -254,7 +254,7 @@ const HeroSection = () => {
                     <p className="ml-4">
                       <span className="text-slate-200">skills:</span> [
                       <span className="text-[#88E5FF]">
-                        'NextJS', 'GSAP', 'AI'
+                        'React', 'Next.js', 'ASP.NET Core',
                       </span>
                       ],
                     </p>
@@ -271,7 +271,7 @@ const HeroSection = () => {
                     <p className="ml-4">
                       <span className="text-slate-200">motto:</span>{" "}
                       <span className="text-[#88E5FF]">
-                        "Build with Purpose"
+                        "Build with Vision"
                       </span>
                     </p>
                   </div>
