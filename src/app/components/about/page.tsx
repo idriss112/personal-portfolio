@@ -1,4 +1,5 @@
 "use client";
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
@@ -6,12 +7,15 @@ import { SplitText } from "gsap/dist/SplitText";
 import { User, Sparkles } from "lucide-react";
 
 function About() {
+  const descriptionRef = useRef<HTMLDivElement>(null);
+
   useGSAP(() => {
+    if (!descriptionRef.current) return;
+
     gsap.registerPlugin(SplitText, ScrollTrigger);
 
-    const split = new SplitText(".about-description", {
-      type: "lines,words",
-      linesClass: "overflow-hidden",
+    const split = new SplitText(descriptionRef.current, {
+      type: "words",
     });
 
     gsap.from(split.words, {
@@ -22,16 +26,17 @@ function About() {
       duration: 1,
       ease: "power3.out",
       scrollTrigger: {
-        trigger: ".about-description",
+        trigger: descriptionRef.current,
         start: "top 85%",
         toggleActions: "play none none none",
       },
     });
 
-  }, []);
+    return () => split.revert();
+  }, { dependencies: [], revertOnUpdate: true });
 
   return (
-    <div id="about" className="relative py-24 lg:py-48 overflow-hidden">
+    <div id="about" className="relative py-16 lg:py-24 overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute top-1/4 -left-20 w-[400px] h-[400px] bg-[#61DAFB]/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-1/4 -right-20 w-[400px] h-[400px] bg-[#20232A]/10 blur-[120px] rounded-full pointer-events-none" />
@@ -60,7 +65,10 @@ function About() {
               <Sparkles className="w-24 h-24 text-[#61DAFB]" />
             </div>
 
-            <div className="about-description text-slate-300 text-lg lg:text-xl leading-relaxed text-justify space-y-4 font-medium italic">
+            <div
+              ref={descriptionRef}
+              className="about-description text-slate-300 text-lg lg:text-xl leading-relaxed text-justify font-medium italic"
+            >
               I&apos;m Driss Laaziri, a Full-Stack Developer based in Montreal
               specializing in React, Next.js, TypeScript, C#, and .NET. I
               build responsive, scalable web and mobile applications from
