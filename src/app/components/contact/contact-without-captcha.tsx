@@ -38,6 +38,8 @@ const ContactWithoutCaptcha = () => {
 
     const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "";
     const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "";
+    const autoReplyTemplateID =
+      process.env.NEXT_PUBLIC_EMAILJS_AUTOREPLY_TEMPLATE_ID ?? "";
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "";
 
     if (!serviceID || !templateID || !publicKey) {
@@ -79,7 +81,45 @@ const ContactWithoutCaptcha = () => {
       );
 
       if (res.status === 200) {
-        toast.success("Message sent successfully!");
+        let autoReplySent = false;
+
+        if (autoReplyTemplateID) {
+          try {
+            const autoReplyParams = {
+              to_name: trimmedName,
+              to_email: trimmedEmail,
+              from_name:
+                process.env.NEXT_PUBLIC_EMAILJS_TO_NAME ?? "Driss Laaziri",
+              reply_to:
+                process.env.NEXT_PUBLIC_EMAILJS_REPLY_TO ?? "no-reply@local.dev",
+              subject: `Thanks for reaching out, ${trimmedName}`,
+              message: trimmedMessage,
+              website_name: "Driss Laaziri Portfolio",
+            };
+
+            const autoReplyRes = await emailjs.send(
+              serviceID,
+              autoReplyTemplateID,
+              autoReplyParams,
+              options,
+            );
+
+            autoReplySent = autoReplyRes.status === 200;
+          } catch (autoReplyError) {
+            console.error("Auto-reply send failed:", autoReplyError);
+          }
+        }
+
+        if (autoReplyTemplateID && autoReplySent) {
+          toast.success("Message sent! Confirmation email delivered.");
+        } else if (autoReplyTemplateID && !autoReplySent) {
+          toast.success(
+            "Message sent! Confirmation email failed, but your message was delivered.",
+          );
+        } else {
+          toast.success("Message sent successfully!");
+        }
+
         setIsLoading(false);
         setInput({
           name: "",
