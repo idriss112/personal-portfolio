@@ -38,14 +38,35 @@ const ContactWithoutCaptcha = () => {
 
     const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "";
     const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "";
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "";
+
+    if (!serviceID || !templateID || !publicKey) {
+      toast.error(
+        "EmailJS is not configured. Please set service ID, template ID, and public key.",
+      );
+      return;
+    }
+
     const options = {
-      publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "",
+      publicKey,
     };
 
+    const trimmedName = input.name.trim();
+    const trimmedEmail = input.email.trim();
+    const trimmedMessage = input.message.trim();
+
     const templateParams = {
-      from_name: input.name,
-      email: input.email,
-      message: `${input.message} \nEmail: ${input.email}`,
+      from_name: trimmedName,
+      from_email: trimmedEmail,
+      sender_name: trimmedName,
+      sender_email: trimmedEmail,
+      email: trimmedEmail, // backward compatibility with current EmailJS template
+      reply_to: trimmedEmail,
+      message: trimmedMessage,
+      subject: `Portfolio message from ${trimmedName}`,
+      to_name: process.env.NEXT_PUBLIC_EMAILJS_TO_NAME ?? "Driss Laaziri",
+      website_name: "Driss Laaziri Portfolio",
+      submitted_at: new Date().toISOString(),
     };
 
     try {
