@@ -1,4 +1,6 @@
 import {
+  SiAndroid,
+  SiDotnet,
   SiHtml5,
   SiCss3,
   SiJavascript,
@@ -11,6 +13,9 @@ import {
   SiMysql,
   SiFirebase,
   SiGit,
+  SiSharp,
+  SiSqlite,
+  SiSwift,
   SiFigma,
   SiBootstrap,
   SiMui,
@@ -19,6 +24,7 @@ import {
   SiAdobephotoshop,
   SiFreelancer,
 } from "react-icons/si";
+import { FaDatabase } from "react-icons/fa";
 import { IconType } from "react-icons";
 
 export const getSkillIcon = (skill: string): IconType => {
@@ -44,12 +50,36 @@ export const getSkillIcon = (skill: string): IconType => {
     case "next.js":
       return SiNextdotjs;
     case "tailwind":
+    case "tailwind css":
     case "tailwindcss":
       return SiTailwindcss;
     case "node js":
     case "nodejs":
     case "node.js":
       return SiNodedotjs;
+    case "c#":
+    case "csharp":
+      return SiSharp;
+    case ".net":
+    case "dotnet":
+      return SiDotnet;
+    case "asp.net core":
+    case "aspnet core":
+      return SiDotnet;
+    case ".net maui":
+    case "dotnet maui":
+      return SiDotnet;
+    case "android":
+    case "android (java)":
+      return SiAndroid;
+    case "swiftui":
+    case "swift ui":
+      return SiSwift;
+    case "sql server":
+    case "mssql":
+      return FaDatabase;
+    case "sqlite":
+      return SiSqlite;
     case "mongodb":
       return SiMongodb;
     case "mysql":
@@ -94,10 +124,33 @@ export const getSkillColor = (skill: string): string => {
     case "next.js":
       return "#ffffff"; // Keep white for contrast
     case "tailwind":
+    case "tailwind css":
+    case "tailwindcss":
       return "#282C34"; // Red-800
     case "node js":
     case "nodejs":
+    case "node.js":
       return "#4FA8C7"; // Red-700
+    case "c#":
+    case "csharp":
+      return "#61DAFB";
+    case ".net":
+    case "dotnet":
+    case "asp.net core":
+    case "aspnet core":
+    case ".net maui":
+    case "dotnet maui":
+      return "#4FA8C7";
+    case "android":
+    case "android (java)":
+      return "#61DAFB";
+    case "swiftui":
+    case "swift ui":
+      return "#4FA8C7";
+    case "sql server":
+    case "mssql":
+    case "sqlite":
+      return "#282C34";
     case "mongodb":
       return "#21232A"; // Red-900
     case "mysql":

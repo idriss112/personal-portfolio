@@ -66,12 +66,6 @@ const Footer = () => (
               >
                 {personalData.email}
               </a>
-              <a
-                href={`tel:${personalData.phone}`}
-                className="text-gray-400 hover:text-[#61DAFB] transition-all font-medium"
-              >
-                {personalData.phone}
-              </a>
             </div>
           </div>
 
@@ -112,11 +106,6 @@ const Footer = () => (
       <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
         <p>
           &copy; {new Date().getFullYear()} Driss Laaziri. All rights reserved.
-        </p>
-        <p className="flex items-center gap-2">
-          Made with{" "}
-          <span className="text-[#61DAFB] animate-pulse">&#10084;&#65039;</span>{" "}
-          in Pakistan
         </p>
       </div>
     </div>

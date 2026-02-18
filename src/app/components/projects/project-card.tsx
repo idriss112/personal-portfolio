@@ -151,20 +151,19 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         </div>
 
         <CardFooter className="p-6 pt-2 flex gap-4">
-          <Link href={project.demo || "#"} target="_blank" className="flex-1">
-            <Button
-              className={`w-full h-11 rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 border border-white/10 ${
-                project.demo
-                  ? "bg-white/5 hover:bg-[#61DAFB] text-white hover:text-[#20232A] hover:border-[#61DAFB] shadow-xl hover:shadow-[#61DAFB]/20"
-                  : "bg-white/2 text-slate-800 cursor-not-allowed border-none"
-              }`}
-              disabled={!project.demo}
-            >
-              <Globe className="w-4 h-4" />
-              Live Demo
-            </Button>
-          </Link>
-          <Link href={project.code || "#"} target="_blank" className="flex-1">
+          {project.demo && (
+            <Link href={project.demo} target="_blank" className="flex-1">
+              <Button className="w-full h-11 rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 border border-white/10 bg-white/5 hover:bg-[#61DAFB] text-white hover:text-[#20232A] hover:border-[#61DAFB] shadow-xl hover:shadow-[#61DAFB]/20">
+                <Globe className="w-4 h-4" />
+                Live Demo
+              </Button>
+            </Link>
+          )}
+          <Link
+            href={project.code || "#"}
+            target="_blank"
+            className={project.demo ? "flex-1" : "w-full"}
+          >
             <Button
               className={`w-full h-11 rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 border border-white/10 ${
                 project.code

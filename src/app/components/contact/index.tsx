@@ -1,9 +1,8 @@
 "use client";
 import Link from "next/link";
 import { BiLogoLinkedin } from "react-icons/bi";
-import { FaFacebook, FaStackOverflow } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { IoLogoGithub, IoMdCall } from "react-icons/io";
+import { IoLogoGithub } from "react-icons/io";
 import { MdAlternateEmail } from "react-icons/md";
 import { personalData } from "@/../utils/Data/PersonalData";
 import ContactWithoutCaptcha from "./contact-without-captcha";
@@ -58,13 +57,13 @@ const ContactInfoCard = ({
 
 function ContactSection() {
   return (
-    <div id="contact" className="relative z-50 py-24 lg:py-48 overflow-hidden">
+    <div id="contact" className="relative z-50 py-16 lg:py-24 overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#61DAFB]/10 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-4 lg:px-8">
         <SectionReveal direction="up">
-          <div className="flex flex-col items-center gap-6 mb-20">
+          <div className="flex flex-col items-center gap-6 mb-14 lg:mb-16">
             <div className="flex items-center gap-3 text-[#61DAFB]">
               <div className="w-10 h-10 rounded-xl bg-[#61DAFB]/10 flex items-center justify-center">
                 <MessageSquare className="w-5 h-5 shadow-[0_0_10px_rgba(97, 218, 251, 0.3)]" />
@@ -111,13 +110,6 @@ function ContactSection() {
                     color="#61DAFB"
                   />
                   <ContactInfoCard
-                    href={`tel:${personalData.phone}`}
-                    icon={IoMdCall}
-                    label="Phone"
-                    value={personalData.phone}
-                    color="#61DAFB"
-                  />
-                  <ContactInfoCard
                     href="#"
                     icon={MapPin}
                     label="Location"
@@ -149,16 +141,6 @@ function ContactSection() {
                       href: personalData.twitter,
                       icon: FaXTwitter,
                       color: "#1da1f2",
-                    },
-                    {
-                      href: personalData.stackOverflow,
-                      icon: FaStackOverflow,
-                      color: "#f48024",
-                    },
-                    {
-                      href: personalData.facebook,
-                      icon: FaFacebook,
-                      color: "#1877f2",
                     },
                   ].map((social, idx) => (
                     <Link

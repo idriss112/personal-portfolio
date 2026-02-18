@@ -9,12 +9,12 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="relative z-50 py-16 lg:py-32  overflow-hidden"
+      className="relative z-50 py-16 lg:py-24 overflow-hidden"
     >
       {/* Background Decorative Element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#61DAFB]/5 blur-[150px] rounded-full pointer-events-none" />
 
-      <div className="flex justify-center mb-20 lg:mb-32">
+      <div className="flex justify-center mb-12 lg:mb-20">
         <div className="flex items-center">
           <span className="w-24 h-[2px] bg-gradient-to-r from-transparent to-[#61DAFB]"></span>
           <span className="bg-[#050505] border border-[#61DAFB]/30 w-fit text-white p-3 px-8 text-2xl font-bold rounded-full shadow-[0_0_20px_rgba(97, 218, 251, 0.3)]">
