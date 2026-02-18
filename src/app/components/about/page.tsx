@@ -67,7 +67,7 @@ function About() {
 
             <div
               ref={descriptionRef}
-              className="about-description text-slate-300 text-lg lg:text-xl leading-relaxed text-justify font-medium italic"
+              className="about-description text-slate-300 text-lg lg:text-xl leading-relaxed text-justify font-normal"
             >
               I&apos;m Driss Laaziri, a Full-Stack Developer based in Montreal
               specializing in React, Next.js, TypeScript, C#, and .NET. I
