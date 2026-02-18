@@ -1,7 +1,7 @@
 "use client";
 
 import emailjs from "@emailjs/browser";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TbMailForward } from "react-icons/tb";
 import { toast } from "react-toastify";
 import { isValidEmail } from "@/../utils/check-email";
@@ -18,11 +18,32 @@ const ContactWithoutCaptcha = () => {
     required: false,
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [showSuccessAnimation, setShowSuccessAnimation] = useState(false);
+  const successTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (successTimeoutRef.current) {
+        clearTimeout(successTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const checkRequired = () => {
     if (input.email && input.message && input.name) {
       setError({ ...error, required: false });
     }
+  };
+
+  const triggerSuccessAnimation = () => {
+    if (successTimeoutRef.current) {
+      clearTimeout(successTimeoutRef.current);
+    }
+
+    setShowSuccessAnimation(true);
+    successTimeoutRef.current = setTimeout(() => {
+      setShowSuccessAnimation(false);
+    }, 2200);
   };
 
   const handleSendMail = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -120,6 +141,7 @@ const ContactWithoutCaptcha = () => {
           toast.success("Message sent successfully!");
         }
 
+        triggerSuccessAnimation();
         setIsLoading(false);
         setInput({
           name: "",
@@ -242,6 +264,40 @@ const ContactWithoutCaptcha = () => {
 
       {/* Decorative Accent */}
       <div className="absolute w-1 h-20 bg-gradient-to-b from-[#61DAFB] to-transparent left-0 top-20 rounded-full" />
+
+      {/* Success Animation Overlay */}
+      <div
+        className={`absolute inset-0 z-20 flex items-center justify-center rounded-3xl transition-all duration-500 ${showSuccessAnimation ? "opacity-100 visible" : "opacity-0 invisible"}`}
+        aria-live="polite"
+      >
+        <div className="absolute inset-0 rounded-3xl bg-[#050505]/85 backdrop-blur-sm" />
+        <div
+          className={`relative flex flex-col items-center gap-3 rounded-2xl border border-[#61DAFB]/30 bg-[#0b1220]/95 px-8 py-6 shadow-[0_0_30px_rgba(97,218,251,0.2)] transition-all duration-500 ${showSuccessAnimation ? "translate-y-0 scale-100" : "translate-y-4 scale-95"}`}
+        >
+          <div className="relative">
+            <span className="absolute inset-0 rounded-full bg-[#61DAFB]/40 animate-ping" />
+            <span className="relative flex h-14 w-14 items-center justify-center rounded-full border border-[#61DAFB]/40 bg-[#61DAFB]/15">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                className="h-7 w-7 text-[#61DAFB]"
+                aria-hidden="true"
+              >
+                <path
+                  d="M20 7L10 17L5 12"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+          </div>
+          <p className="text-center text-white font-semibold tracking-wide">
+            Message Sent Successfully
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
